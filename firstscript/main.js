@@ -135,23 +135,23 @@
 // } while (w < 5);
 
 
-const todo = [
-    {
-        id: 1,
-        text: "sam maro",
-        isComplete: true
-    },
-        {
-        id: 2,
-        text: "sam",
-        isComplete: true
-    },
-        {
-        id: 3,
-        text: " maro",
-        isComplete: false
-    }
-];
+// const todo = [
+//     {
+//         id: 1,
+//         text: "sam maro",
+//         isComplete: true
+//     },
+//         {
+//         id: 2,
+//         text: "sam",
+//         isComplete: true
+//     },
+//         {
+//         id: 3,
+//         text: " maro",
+//         isComplete: false
+//     }
+// ];
 
 // for(let i = 0; i < todo.length; i++){
 //     console.log(todo[i]);
@@ -183,9 +183,9 @@ const todo = [
 
 
 
-// conditional statements
-// const x = 4;
-// if(x === 10) {
+// // conditional statements
+// const x = 10;
+// if(x === "10") {
 //     console.log('x is 10');
 // } else if (x > 10) {
 //     console.log('x is greater than 10');
@@ -231,9 +231,136 @@ const todo = [
 // }
 
 
+// // Functions
+// function addNums(num1, num2) {
+//     return num1 + num2;
+// }
 
-function addNums(num1, num2) {
-    return num1 + num2;
-}
+// console.log(addNums(5, 10));
 
-console.log(addNums(5, 10));
+// // Arrow function
+// const addNums2 = (num1, num2) => {
+//     return num1 + num2;
+// }
+
+// console.log(addNums2(5, 10));
+
+// // Single line arrow function
+// const addNums3 = (num1, num2) => console.log(num1 + num2);
+// addNums3(5, 10);
+
+
+// OOP
+// function Person(firstName, lastName, dob) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.dob = new Date(dob); 
+//     this.getBirthYear = function() {
+//         return this.dob.getFullYear();
+//     }
+//     this.getFullName = function() {
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+// }
+
+// // prototype
+// Person.prototype.getBirthYear = function() {
+//     return this.dob.getFullYear();
+// }
+
+// // Instantiate object
+// const person1 = new Person('sam', 'solo', '07-02')
+// const person2 = new Person('mon', 'solo', '07-02')
+// console.log(person1.dob);
+// console.log(person1.getBirthYear());
+// console.log(person1.getFullName());
+
+
+
+// for(let i = 0; i <= 100; i++) {
+//     console.log(i)
+// }
+
+// let i = 0;
+// while(i <= 100) {
+//     console.log(i);
+//     i++;
+// };
+
+
+// let day = 1;
+// while(day <= 7){
+//     if (day >= 1 && day <= 6);
+//     console.log('weekday');
+
+//     day++
+// };
+
+
+// }while(day <= 7);
+
+
+// while(day >= 1 && day <= 6){
+//     console.log(day);
+
+//     day++
+// };
+
+
+
+
+// let day = 0;
+
+// while(day < 7){
+//     if (day == 0){
+//         console.log("sun")
+//     }
+//   else  if (day == 1){
+//         console.log("mon")
+//     }
+//    else if (day == 2){
+//         console.log("tues")
+//     }
+//   else  if (day == 3){
+//         console.log("wed")
+//     }
+//   else  if (day == 4){
+//         console.log("thurs")
+//     }
+//   else  if (day == 5){
+//         console.log("fri")
+//     }
+//     else     if (day == 6){
+//         console.log("sat")
+//     }
+    
+//     day++
+// }
+
+// function dayoftheweek(day){
+//     switch (day) {
+//         case 0:
+//             return "sun"
+//         case 1:
+//             return "mon"
+//         case 2:
+//             return "Teus"
+//         case 3:
+//             return "Wed"
+//         case 4:
+//             return "Thus"
+//         case 5:
+//             return "fri"
+//         case 6:
+//             return "sat"
+//         default:
+//             break;
+//     }
+// }
+
+// console.log(dayoftheweek(2))
+
+
+
+
+

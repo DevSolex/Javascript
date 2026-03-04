@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Js Tutorial</title>
-</head>
-<body>
-    <header>
-        <h1>My First JavaScript</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    <link rel="stylesheet" href="src/output.css">
+  </head>
+  <body class="">
+    <header class="bg-[#f4f4f4] p-4 text-center">
+      <h1>JS For Beginners</h1>
     </header>
+
+    <section class="container mx-auto w-125 px-12 py-8 ">
+      <form class="p-8 bg-[#f4f4f4]">
+        <h1 class="font-bold text-lg">Add User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+          <input type="text" id="name" class="border border-gray-300 rounded py-2 px-4">
+        </div>
+        <div>
+          <label for="email" class="block text-gray-700 font-bold mb-2">Email:</label>
+          <input type="text" id="email" class="border border-gray-300 rounded py-2 px-4">
+        </div>
+        <input class="btn block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-62 mt-4 rounded" type="submit" value="Submit" >
+      </form>
+
+      <ul id="users"></ul>
+
+      <!-- <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> -->
+    </section>
     
+
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
