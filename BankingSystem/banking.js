@@ -1,89 +1,81 @@
 class BankAccount {
+    alltransactions = []
     constructor(lName, fName, balance) {
         this.lastName = lName;
         this.firstName = fName;
         this.balance = balance;
+        this.overdraftlimit = this.balance * 0.5;
+        this.bonus = this.balance * 0.05;
     }
 
-    deposit(amount) {
-        if (typeof amount !== "number" || amount <= 0) {
-            return "Deposit amount must be a positive number"
-        } 
-        else {
-            this.balance += amount
-            return "Deposit of " + amount + " " + "to" + " " + this.firstName + " " + this.lastName + " successful"
-        }
-    }
+    // overdraftlimit = this.balance * 0.5;
+    // bonus = this.balance * 0.05;
+
+    // deposit(amount) {
+    //     if (typeof amount !== "number" || amount <= 0) {
+    //         return "Deposit amount must be a positive number"
+    //     } 
+    //     else {
+    //         this.balance += amount
+    //         this.alltransactions.push({ type: "deposit", amount: amount })
+    //         return "Deposit of " + amount + " " + "to" + " " + this.firstName + " " + this.lastName + " successful"
+
+    //     }
+    // }
 
     withdraw(amount) {
         if (typeof amount !== "number" || amount <= 0) {
             return "Withdrawal amount must be a positive number"
         }
-        else if (this.balance >= amount){
-            this.balance -= amount
-            return "Withdrawal of " + amount + " " + "from " + this.firstName + " " + this.lastName + " successful"
-        } 
-        else {
-            return "Insufficient funds"
+        else if (amount > this.balance && this instanceof SavingsAccount && this.bonusconfirm == true) {
+            this.balance += this.bonus;
+            if (amount > this.balance) {
+                return "Insufficient funds even with bonus"
+            }
+        }
+        else if (amount > this.balance && this instanceof SavingsAccount && this.bonusconfirm == true) {
+                this.balance += this.bonus;
+                if (this.balance + this.bonus < amount) {
+                    this.balance -= amount;
+                    this.alltransactions.push({ type: "withdrawal", amount: amount })
+                    return "Withdrawal of " + amount + " from " + this.firstName + " " + this.lastName + " successful with bonus"
+                }
         }
     }
 
-    transfer(transferTo, amount) {
-        if (typeof amount !== "number" || amount <= 0) {
-            return "Transfer amount must be a positive number"
-        }
-        else if (this.balance >= amount){
-            let verify = transferTo instanceof BankAccount;
-            if(! verify){
-                return transferTo + "is not a valid name"
-            }
-            this.withdraw(amount)
-            this.deposit(amount)
-            return "Transfer of " + amount + " " + "from " + this.firstName + " " + this.lastName + " to " + transferTo.firstName + " " + transferTo.lastName + " successful"
-        } 
-        else {
-            return "Insufficient funds"
-        }
+    // transfer(transferTo, amount) {
+    //     if (typeof amount !== "number" || amount <= 0) {
+    //         return "Transfer amount must be a positive number"
+    //     }
+    //     else if (this.balance >= amount){
+    //         let verify = transferTo instanceof BankAccount;
+    //         if(! (verify)){
+    //             return transferTo + "is not a valid name"
+    //         }
+    //         this.withdraw(amount)
+    //         this.deposit(amount)
+    //         this.alltransactions.push({ type: "transfer", amount: amount, to: transferTo.firstName + " " + transferTo.lastName })
+    //         return "Transfer of " + amount + " " + "from " + this.firstName + " " + this.lastName + " to " + transferTo.firstName + " " + transferTo.lastName + " successful"
+    //     } 
+    //     else {
+    //         return "Insufficient funds"
+    //     }
+    // }
+
+    transactionHistory() {
+        return this.alltransactions;
     }
 
 }
 
 class SavingsAccount extends BankAccount {
-    applyBonus() {
-        let bonus = this.balance * 0.05;
-        this.balance += bonus;
-        return "Bonus of " + bonus + " applied to " + this.firstName + " " + this.lastName + "'s account";
+    constructor(lName, fName, balance, bonusconfirm) {
+        super(lName, fName, balance);
+        this.bonusconfirm = bonusconfirm;
     }
+
 }
 
-class CurrentAccount extends BankAccount {
-    overdraft(amount) {
-        if (typeof amount !== "number" || amount <= 0) {
-            return "Overdraft amount must be a positive number"
-        } 
-        else {
-            this.balance -= amount;
-            return "Overdraft of " + amount + " applied to " + this.firstName + " " + this.lastName + "'s account";
-        }
-    }
-}
 
-solex = new BankAccount("Solex", "Dev", 1000)
-console.log(solex.deposit(500))
-console.log(solex.withdraw(200))
-console.log(solex.balance)
-
-john = new BankAccount("Doe", "John", 500)
-console.log(solex.transfer(ohn, '300'))
-console.log(solex.balance)
-console.log(john.balance)                                                 
-
-
-savings = new SavingsAccount("Smith", "Jane", 2000)
-console.log(savings.applyBonus())
-console.log(savings.balance)
-
-current = new CurrentAccount("Brown", "Charlie", 1500)
-console.log(current.overdraft(500))
-console.log(current.balance)
-console.log(current.withdraw(1050))
+saving = new SavingsAccount("Doe", "John", 1000, true);
+console.log(saving.withdraw(1050));
